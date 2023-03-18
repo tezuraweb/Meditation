@@ -1,0 +1,73 @@
+.prescriptions {
+    &__wrapper {
+        padding: 50px 0;
+    }
+    
+    &__list {
+        display: flex;
+    }
+
+    &__item {
+        position: relative;
+        flex-basis: 33.333%;
+        padding: 50px 0 0 85px;
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+        }
+
+        // colors
+        @each $class, $color in $colorClasses {
+            &--#{$class} {
+                &::before {
+                    background-color: #{$color};
+                }
+            }
+        }
+    }
+
+    //media
+
+    @media (max-width: $laptop-breakpoint) {
+        &__item {
+            padding: 35px 0 0 50px;
+
+            &::before {
+                width: 45px;
+                height: 45px;
+            }
+        }
+    }
+
+    @media (max-width: $tablet-breakpoint) {
+        &__wrapper {
+            padding: 0;
+        }
+
+        &__list {
+            flex-wrap: wrap;
+        }
+
+        &__item {
+            flex-basis: 100%;
+            padding: 35px 0 0 50px;
+            margin-bottom: 40px;
+            
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    @media (max-width: $mobile-breakpoint) {
+        &__item {
+            padding: 0 0 0 70px;
+        }
+    }
+}

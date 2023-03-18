@@ -1,0 +1,154 @@
+{% set pageTitle = 'Медитации' %}
+
+{% set backgroundColor = 'white' %}
+{% set borderColor = 'white' %}
+{% set selectPractice = true %}
+
+{% set cardsData = [
+    {
+        link: '/practices/ego',
+        cover: '/img/main/card1.png',
+        coverLarge: '/img/main/cardLarge1.png',
+        title: 'Связь с Высшим Я, медитативное дыхание',
+        text: 'Практики медитативного дыхания – идеальный первый шаг для того, чтобы гармонично встроить практику медитации в свою жизнь. Они помогут вам быстро снять напряжение, расслабиться, отдохнуть – улучшить общее самочувствие.',
+        audio: '/audio/track-1-1.mp3',
+        audioTitle: 'День 1. Дыхание',
+        contentColor: 'blue'
+    },
+    {
+        link: '/practices/cure',
+        cover: '/img/main/card2.png',
+        coverLarge: '/img/main/cardLarge2.png',
+        title: 'Исцеляющие медитации',
+        text: 'Медитация на раскрытие чакры --- позволяет раскрыть свое сердце и привлечь в жизнь отношения мечты. Месячный курс состоит из 30 ежедневных медитаций, доступ к которым сохранится у вас навсегда.',
+        audio: '/audio/track-2-1.mp3',
+        audioTitle: 'День 2. Дыхание',
+        contentColor: 'green'
+    },
+    {
+        link: '/practices/female',
+        cover: '/img/main/card3.png',
+        coverLarge: '/img/main/cardLarge3.png',
+        title: 'Женская энергия',
+        text: 'Медитация на раскрытие чакры --- позволяет раскрыть свое сердце и привлечь в жизнь отношения мечты. Месячный курс состоит из 30 ежедневных медитаций, доступ к которым сохранится у вас навсегда.',
+        audio: '/audio/track-3-1.mp3',
+        audioTitle: 'День 3. Дыхание',
+        contentColor: 'red'
+    },
+    {
+        link: '/practices/wishes',
+        cover: '/img/main/card4.png',
+        coverLarge: '/img/main/cardLarge4.png',
+        title: 'Исполнение желаний',
+        text: 'Медитация на раскрытие чакры --- позволяет раскрыть свое сердце и привлечь в жизнь отношения мечты. Месячный курс состоит из 30 ежедневных медитаций, доступ к которым сохранится у вас навсегда.',
+        audio: '/audio/track-4-1.mp3',
+        audioTitle: 'День 4. Дыхание',
+        contentColor: 'yellow'
+    },
+    {
+        link: '/practices/integrity',
+        cover: '/img/main/card5.png',
+        coverLarge: '/img/main/cardLarge5.png',
+        title: 'Обретение целостности',
+        text: 'Медитация на раскрытие чакры --- позволяет раскрыть свое сердце и привлечь в жизнь отношения мечты. Месячный курс состоит из 30 ежедневных медитаций, доступ к которым сохранится у вас навсегда.',
+        audio: '/audio/track-5-1.mp3',
+        audioTitle: 'День 5. Дыхание',
+        contentColor: 'darkblue'
+    }
+] %}
+
+{% extends "layouts/main.njk" %}
+
+{% block mainContent %}
+
+    <section class="section billboard">
+        <div class="container__base">
+            <div class="billboard__wrapper">
+                <div class="billboard__text">
+                    <h1 class="billboard__title">Медитации<br>в записи на каждый день</h1>
+
+                    <div class="billboard__summary">На все случаи жизни: привлечение финансов, удачи, любви, самореализация</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section points">
+        <div class="container__base">
+            <h2 class="section__title">Как проходит практика</h2>
+
+            <div class="points__wrapper">
+                <div class="points__item">
+                    <div class="points__number">1</div>
+                    <div class="points__text">Вы консультируетесь со специалистом, подбираете практику и оплачиваете
+                        курс
+                    </div>
+                </div>
+                <div class="points__item">
+                    <div class="points__number">2</div>
+                    <div class="points__text"> Вам дается доступ в телеграм-бот, который ежедневно в 5:00 отправляет вам
+                        запись медитации</div>
+                </div>
+                <div class="points__item">
+                    <div class="points__number">3</div>
+                    <div class="points__text">На протяжении всего курса для вас доступна поддержка специалиста онлайн +
+                        одна личная встреча</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section practice-cards" id="courses">
+        <div class="container__base">
+            <h2 class="section__title">Практики</h2>
+
+            <div class="practice-cards__wrapper">
+                {% for item in cardsData %}
+                    <article class="practice-cards__item">
+                        <div class="practice-cards__cover">
+                            <a href="{{ item.link }}">
+                                <figure>
+                                    <picture>
+                                        <source media="(min-width: 426px)" srcset="{{ item.coverLarge }}">
+                                        <img src="{{ item.cover }}" alt="{{ item.title|e }}">
+                                    </picture>
+                                </figure>
+                            </a>
+                        </div>
+                        <div class="practice-cards__content">
+                            <a href="{{ item.link }}" class="practice-cards__title">{{ item.title|e }}</a>
+                            <div class="practice-cards__text">{{ item.text|e }}</div>
+                            <div class="practice-cards__audio">
+                                {% set contentColor = item.contentColor %}
+                                {% set audioTitle = item.audioTitle %}
+                                {% set audioFile = item.audio %}
+
+                                {% include "includes/audio.njk" %}
+
+                                <div class="practice-cards__audio--button">Попробуйте бесплатно!</div>
+                            </div>
+                        </div>
+                    </article>
+                {% endfor %}
+
+                <div class="practice-cards__promotion">
+                    <div class="practice-cards__promotion--wrapper">
+                        <div class="practice-cards__promotion--text">Не будь лохом!<br>Оставь заявку уже сейчас!</div> 
+                        <a class="practice-cards__promotion--link" href="#sendlead">Оставить заявку</a>
+                    </div>
+                </div> 
+            </div>
+        </div>
+    </section>
+
+    <section class="section mainpage-form" id="sendlead">
+        <div class="container__base">
+            <h2 class="section__title">Записаться на консультацию</h2>
+
+            <div class="mainpage-form__wrapper">
+                {% include "includes/leadForm.njk" %}
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

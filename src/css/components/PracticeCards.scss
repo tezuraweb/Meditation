@@ -1,0 +1,144 @@
+.practice-cards {
+    margin-bottom: 100px;
+
+    &__wrapper {
+        margin: 0 -15px;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    &__item {
+        padding: 15px;
+        flex-basis: 50%;
+        border-radius: 20px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__cover {
+        border-radius: 20px 20px 0 0;
+    }
+
+    &__content {
+        padding: 30px;
+        background-color: $grey;
+        border-radius: 0 0 20px 20px;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__title {
+        display: block;
+        font-weight: 700;
+        margin-bottom: 15px;
+    }
+
+    &__text {
+        font-size: 16px;
+        line-height: 24px;
+        padding-bottom: 25px;
+    }
+
+    &__audio {
+        display: flex;
+        align-items: flex-end;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-top: auto;
+
+        &--button {
+            font-size: 16px;
+            line-height: 24px;
+            padding: 12px 12px 0;
+        }
+    }
+
+    &__promotion {
+        padding: 15px;
+        flex-basis: 50%;
+
+        &--wrapper {
+            border: 1px solid $pink;
+            border-radius: 20px;
+            padding: 60px 30px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            background-image: url('../../assets/img/practices/flower-2-red.svg');
+            background-repeat: no-repeat;
+            background-position-x: right;
+            background-position-y: bottom;
+            background-size: 95%;
+        }
+
+        &--text {
+            font-size: 32px;
+            line-height: 35px;
+            font-weight: 800;
+            text-align: center;
+            background-color: rgba(255,255,255,.8);
+            padding: 30px 10px;
+            border-radius: 20px;
+        }
+
+        &--link {
+            max-width: 300px;
+            margin: auto auto 0;
+            font-weight: 700;
+            color: $white;
+            background-color: $pink;
+            border: 2px solid $white;
+            border-radius: 20px;
+            padding: 25px 75px;
+            cursor: pointer;
+        }
+    }
+
+    //media
+
+    @media (max-width: $tablet-breakpoint) {
+        margin-bottom: 40px;
+
+        &__item {
+            padding: 0;
+            flex-basis: 100%;
+            margin-bottom: 30px;
+    
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+
+        &__promotion {
+            padding: 0;
+            flex-basis: 100%;
+
+            &--text {
+                margin-bottom: 60px;
+                font-size: 22px;
+                line-height: 30px;
+            }
+        }
+    }
+
+    @media (max-width: $mobile-breakpoint) {
+        &__wrapper {
+            margin: 0;
+        }
+
+        &__content {
+            padding: 20px;
+        }
+
+        &__promotion {
+            &--wrapper {
+                padding: 20px;
+            }
+
+            &--link {
+                padding: 15px 30px;
+            }
+        }
+    }
+}

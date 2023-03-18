@@ -1,0 +1,18 @@
+@import "./vars/variables";
+@import "./vars/color";
+@import "./vars/fonts";
+
+@import "./base";
+
+@import "./pages/Mainpage";
+@import "./pages/PracticePage";
+
+@import "./components/Header";
+@import "./components/Footer";
+@import "./components/Billboard";
+@import "./components/Points";
+@import "./components/PracticeCards";
+@import "./components/Prescriptions";
+@import "./components/MeditationList";
+@import "./components/LeadForm";
+@import "./components/Audio";

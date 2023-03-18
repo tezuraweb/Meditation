@@ -1,0 +1,177 @@
+.practice {
+    &__header {
+        border-bottom: 1px solid $lightBlue;
+        margin-bottom: 50px;
+
+        // colors
+        @each $class, $color in $colorClasses {
+            &--#{$class} {
+                border-bottom: 1px solid #{$color};
+            }
+        }
+
+        // elements
+        &--wrapper {
+            padding: 20px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        &--link {
+            &--large {
+                font-weight: 800;
+                font-size: 32px;
+                line-height: 38px;
+
+                &::before {
+                    content: '< ';
+                }
+            }
+
+            // colors
+            @each $class, $color in $colorClasses {
+                &--#{$class} {
+                    color: #{$color};
+                }
+            }
+        }
+    }
+
+    &__footer {
+        position: relative;
+        z-index: auto;
+
+        &::before, &::after {
+            content: '';
+            position: absolute;
+            z-index: 0;
+            width: 50%;
+            height: 100%;
+            bottom: 0;
+            background-repeat: no-repeat;
+            background-position-y: bottom;
+        }
+
+        &::before {
+            left: 0;
+            background-position-x: left;
+        }
+
+        &::after {
+            right: 0;
+            background-position-x: right;
+        }
+
+        &--wrapper {
+            display: flex;
+            padding: 80px 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        &--left {
+            flex-basis: 50%;
+        }
+
+        &--right {
+            flex-basis: 50%;
+            padding-left: 30px;
+        }
+
+        &--text {
+            background-color: rgba(255 ,255 ,255, 0.8);
+            padding: 30px 10px;
+            border-radius: 20px;
+            font-weight: 300;
+            font-size: 32px;
+            line-height: 35px;
+            text-align: center;
+        }
+
+        // colors
+        @each $class, $color in $colorClasses {
+            $url1: '../../assets/img/practices/flower-1-' + #{$class} + '.svg';
+            $url2: '../../assets/img/practices/flower-2-' + #{$class} + '.svg';
+
+            &--#{$class} {
+                &::before {
+                    background-image: url(#{$url1});
+                }
+        
+                &::after {
+                    background-image: url(#{$url2});
+                }
+
+                .practice__footer--text {
+                    border-color: #{$color};
+                }
+            }
+        }
+    }
+
+    &__info {
+        &--summary {
+            padding: 35px;
+            background-color: $grey;
+            border-radius: 20px;
+        }
+    }
+
+    //media
+
+    @media (max-width: $laptop-breakpoint) {
+        &__footer {
+            &::before {
+                background-size: 80%;
+            }
+        }
+    }
+
+    @media (max-width: $tablet-breakpoint) {
+        &__header {
+            &--link {
+                &--large {
+                    font-weight: 400;
+                    font-size: 18px;
+                    line-height: 27px;
+                }
+            }
+        }
+
+        &__footer {
+            &::before {
+                width: 100%;
+            }
+    
+            &::after {
+                display: none;
+            }
+
+            &--wrapper {
+                padding: 0 0 100px;
+                flex-direction: column;
+            }
+    
+            &--right {
+                padding-left: 0;
+            }
+
+            &--text {
+                font-size: 22px;
+                line-height: 30px;
+                padding: 30px 20px;
+                border: 1px solid;
+                margin-bottom: 40px;
+            }
+        }
+    }
+
+    @media (max-width: $mobile-breakpoint) {
+        &__info {
+            &--summary {
+                padding: 20px;
+            }
+        }
+    }
+}

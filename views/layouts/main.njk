@@ -1,0 +1,16 @@
+{% extends "layouts/default.njk" %}
+
+{% block bodyContent %}
+
+    {% include "includes/header.njk" %}
+
+    <main class="mainpage">
+        {% block mainContent %}{% endblock %}
+    </main>
+
+    {% include "includes/footer.njk" %}
+
+{% endblock %}
+
+{% block customJs %}
+{% endblock %}

@@ -1,0 +1,76 @@
+$indices: (1, 2, 3, 4, 5);
+
+.meditation-list {
+
+    &__item {
+        background-repeat: no-repeat;
+        background-position-y: bottom;
+        background-size: 100%;
+        padding: 50px 0 100px;
+
+        &--nopadding {
+            padding-top: 0;
+        }
+
+        // colors
+        @each $class, $color in $colorClasses {
+            @each $i, $color in $indices {
+                $url: '../../assets/img/practices/line-' + #{$i} + '-' + #{$class} + '.svg';
+
+                &--#{$class}-#{$i} {
+                    background-image: url(#{$url});
+                }
+            }
+        }
+
+        &--noimage {
+            background-image: none;
+        }
+    }
+
+    &__wrapper {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__audio {
+        flex-basis: 45%;
+
+        &--right {
+            order: 1;
+        }
+    }
+
+    &__text {
+        flex-basis: 45%;
+    }
+
+    //media
+    
+    @media (max-width: $laptop-breakpoint) {
+        &__item {
+            background-size: auto;
+        }
+    }
+
+    @media (max-width: $tablet-breakpoint) {
+        &__wrapper {
+            flex-direction: column;
+            align-items: baseline;
+        }
+
+        &__audio, &__text {
+            flex-basis: 100%;
+        }
+
+        &__audio {
+            width: 100%;
+            margin-bottom: 30px;
+    
+            &--right {
+                order: 0;
+            }
+        }
+    }
+}
