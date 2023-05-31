@@ -1,3 +1,41 @@
+{% set practices = [
+    {
+        type: 'ego',
+        id: 'practice_ego',
+        icon: 'practiceEgo',
+        caption: 'Связь с Высшим Я, медитативное дыхание',
+        color: 'blue'
+    },
+    {
+        type: 'cure',
+        id: 'practice_cure',
+        icon: 'practiceCure',
+        caption: 'Исцеляющие медитации',
+        color: 'green'
+    },
+    {
+        type: 'female',
+        id: 'practice_female',
+        icon: 'practiceFemale',
+        caption: 'Женская энергия',
+        color: 'red'
+    },
+    {
+        type: 'wishes',
+        id: 'practice_wishes',
+        icon: 'practiceWishes',
+        caption: 'Исполнение желаний',
+        color: 'yellow'
+    },
+    {
+        type: 'integrity',
+        id: 'practice_integrity',
+        icon: 'practiceIntegrity',
+        caption: 'Обретение целостности',
+        color: 'darkblue'
+    }
+] %}
+
 <form id="lead-form" class="lead-form{% if color %} lead-form--{{ color }}{% endif %}{% if formIsNarrow %} lead-form--narrow{% endif %}" action="" method="post" {% if page %} data-page="{{ page }}"{% endif %}>
     <label class="lead-form__label" for="form-name">Имя</label>
     <input class="lead-form__input" id="form-name" name="name" type="text" required>
@@ -8,65 +46,18 @@
 
     {% if selectPractice %}
         <div class="lead-form__practices">
-            <label class="lead-form__checkbox" for="practice_ego">
-                <input class="lead-form__checkbox--input" id="practice_ego" name="practice" value="ego" type="checkbox">
-                <div class="lead-form__checkbox--button lead-form__checkbox--button--blue">
-                    <div class="lead-form__checkbox--img">
-                        {% set includeIcon = 'practiceEgo' %}
-                        {% include "includes/svg.njk" %}
+            {% for item in practices %}
+                <label class="lead-form__checkbox" for="{{ item.id }}">
+                    <input class="lead-form__checkbox--input" id="{{ item.id }}" name="practice" value="{{ item.type }}" type="checkbox" data-type="{{ item.type }}">
+                    <div class="lead-form__checkbox--button lead-form__checkbox--button--{{ item.color }}">
+                        <div class="lead-form__checkbox--img">
+                            {% set includeIcon = item.icon %}
+                            {% include "includes/svg.njk" %}
+                        </div>
                     </div>
-                </div>
-            </label>
-
-            <label class="lead-form__checkbox" for="practice_cure">
-                <input class="lead-form__checkbox--input" id="practice_cure" name="practice" value="cure" type="checkbox">
-                <div class="lead-form__checkbox--button lead-form__checkbox--button--green">
-                    <div class="lead-form__checkbox--img">
-                        {% set includeIcon = 'practiceCure' %}
-                        {% include "includes/svg.njk" %}
-                    </div>
-                </div>
-            </label>
-
-            <label class="lead-form__checkbox" for="practice_female">
-                <input class="lead-form__checkbox--input" id="practice_female" name="practice" value="female" type="checkbox">
-                <div class="lead-form__checkbox--button lead-form__checkbox--button--red">
-                    <div class="lead-form__checkbox--img">
-                        {% set includeIcon = 'practiceFemale' %}
-                        {% include "includes/svg.njk" %}
-                    </div>
-                </div>
-            </label>
-
-            <label class="lead-form__checkbox" for="practice_wishes">
-                <input class="lead-form__checkbox--input" id="practice_wishes" name="practice" value="wishes" type="checkbox">
-                <div class="lead-form__checkbox--button lead-form__checkbox--button--yellow">
-                    <div class="lead-form__checkbox--img">
-                        {% set includeIcon = 'practiceWishes' %}
-                        {% include "includes/svg.njk" %}
-                    </div>
-                </div>
-            </label>
-
-            <label class="lead-form__checkbox" for="practice_integrity">
-                <input class="lead-form__checkbox--input" id="practice_integrity" name="practice" value="integrity" type="checkbox">
-                <div class="lead-form__checkbox--button lead-form__checkbox--button--darkblue">
-                    <div class="lead-form__checkbox--img">
-                        {% set includeIcon = 'practiceIntegrity' %}
-                        {% include "includes/svg.njk" %}
-                    </div>
-                </div>
-            </label>
-
-            {# <label class="lead-form__checkbox" for="practice_all">
-                <input class="lead-form__checkbox--input" id="practice_all" name="practice" value="all" type="checkbox">
-                <div class="lead-form__checkbox--button">
-                    <div class="lead-form__checkbox--img">
-                        {% set includeIcon = 'practiceAll' %}
-                        {% include "includes/svg.njk" %}
-                    </div>
-                </div>
-            </label> #}
+                    <div class="lead-form__checkbox--caption lead-form__checkbox--caption--{{ item.color }} lead-form__checkbox--caption--{{ loop.index }}">{{ item.caption }}</div>
+                </label>
+            {% endfor %}
         </div>
     {% endif %}
 

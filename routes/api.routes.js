@@ -17,7 +17,9 @@ router
         };
 
         const data = pick(req.body, 'name', 'phone', 'telegram', 'practiceList');
-        let msg = `Новая заявка!\n\nИмя: ${data.name}\nТелефон: ${data.phone}\nTelegram: ${data.telegram[0] == '@' ? data.telegram : '@' + data.telegram}\n\nВыбранные практики:\n`;
+        const regEx = /^t.me\//;
+        const userLink = regEx.test(data.telegram) ? data.telegram : (data.telegram[0] == '@' ? 't.me/' + data.telegram.slice(1) : 't.me/' + data.telegram);
+        let msg = `Новая заявка!\n\nИмя: ${data.name}\nТелефон: ${data.phone}\nTelegram: ${userLink}\n\nВыбранные практики:\n`;
 
         data.practiceList.forEach((item, index) => {
             msg += practiceNames[item];
@@ -28,6 +30,8 @@ router
         });
 
         TelegramMailer.SendLead(msg);
+
+        console.log(msg);
 
         res
             .header('Location', `${req.protocol}://${req.hostname}`)

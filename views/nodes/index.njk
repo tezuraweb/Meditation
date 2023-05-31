@@ -6,53 +6,58 @@
 
 {% set cardsData = [
     {
+        type: 'ego',
         link: '/practices/ego',
         cover: '/img/main/card1.png',
         coverLarge: '/img/main/cardLarge1.png',
         title: 'Связь с Высшим Я, медитативное дыхание',
         text: 'Практики медитативного дыхания – идеальный первый шаг для того, чтобы гармонично встроить практику медитации в свою жизнь. Они помогут вам быстро снять напряжение, расслабиться, отдохнуть – улучшить общее самочувствие.',
         audio: '/audio/track-1-1.mp3',
-        audioTitle: 'День 1. Дыхание',
+        audioTitle: 'Концентрация внимания на дыхании',
         contentColor: 'blue'
     },
     {
+        type: 'cure',
         link: '/practices/cure',
         cover: '/img/main/card2.png',
         coverLarge: '/img/main/cardLarge2.png',
         title: 'Исцеляющие медитации',
         text: 'Исцеляющие медитации - простые, но очень эффективные практики, направленные на самоисцеление через осознание собственного тела. Фокусируя свое внимание на ощущениях, мы усиливаем наш энергетический потенциал - каждая клеточка нашего тела получает поток энергии - исцеляющий, наполняющий ее жизненной силой, светом.',
         audio: '/audio/track-2-1.mp3',
-        audioTitle: 'День 2. Дыхание',
+        audioTitle: 'Очищающая медитация. Восходящий и нисходящий потоки энергии. Красный, синий и золотисто-желтый',
         contentColor: 'green'
     },
     {
+        type: 'female',
         link: '/practices/female',
         cover: '/img/main/card3.png',
         coverLarge: '/img/main/cardLarge3.png',
         title: 'Женская энергия',
         text: 'Каждой женщине суждено быть счастливой – это ее природа. Практики «Сила женской энергии» помогут вам обрести состояние расслабленности, радости, легкости, открытости, доверия к жизни - осознать свою женскую природу, ощутить ее каждой клеточкой вашего существа.',
         audio: '/audio/track-3-1.mp3',
-        audioTitle: 'День 3. Дыхание',
+        audioTitle: 'Медитация на свечу. Встреча с внутренним ребенком. Любовь к себе',
         contentColor: 'red'
     },
     {
+        type: 'wishes',
         link: '/practices/wishes',
         cover: '/img/main/card4.png',
         coverLarge: '/img/main/cardLarge4.png',
         title: 'Исполнение желаний',
         text: 'Практики «Исполнение желаний» помогут вам шагнуть навстречу вашему прекрасному будущему - будущему вашей мечты. Медитируя день за днем, вы накопите состояние внутреннего покоя и благости, и оно начнет через вас проявляться - вы будете мыслить и действовать в направлении исполнения своих желаний и станете счастливым человеком.',
         audio: '/audio/track-4-1.mp3',
-        audioTitle: 'День 4. Дыхание',
+        audioTitle: 'Полет. Белая птица',
         contentColor: 'yellow'
     },
     {
+        type: 'integrity',
         link: '/practices/integrity',
         cover: '/img/main/card5.png',
         coverLarge: '/img/main/cardLarge5.png',
         title: 'Обретение целостности',
         text: 'Практики «Обретение целостности» помогут вам освободиться от тяжести прошлого и начать новую, счастливую жизнь, в которой светло, легко и радостно.',
         audio: '/audio/track-5-1.mp3',
-        audioTitle: 'День 5. Дыхание',
+        audioTitle: 'Медитация на свечу. Встреча с внутренним ребенком. Любовь к себе',
         contentColor: 'darkblue'
     }
 ] %}
@@ -125,7 +130,7 @@
 
                                 {% include "includes/audio.njk" %}
 
-                                <div class="practice-cards__audio--button">Попробуйте бесплатно!</div>
+                                <a class="practice-cards__audio--button practice-cards__audio--button--{{ contentColor }}" href="#sendlead" data-type="{{ item.type }}">Выбрать этот курс</a>
                             </div>
                         </div>
                     </article>

@@ -23,11 +23,12 @@
     &__practices {
         display: flex;
         justify-content: space-between;
-        margin-top: 35px;
+        margin-top: 45px;
     }
 
     &__checkbox {
         line-height: 0;
+        position: relative;
 
         &--input {
             display: none;
@@ -58,6 +59,46 @@
             }
         }
 
+        &--caption {
+            position: absolute;
+            bottom: 70px;
+            line-height: 27px;
+            text-shadow: 0 0 6px #fff;
+            visibility: hidden;
+            opacity: 0;
+            transition: visibility .3s, opacity .3s;
+
+            &--1 {
+                width: 367px;
+                left: 0;
+            }
+
+            &--2 {
+                width: 211px;
+                left: -72px;
+            }
+
+            &--3 {
+                width: 147px;
+                left: -47px;
+            }
+
+            &--4 {
+                width: 183px;
+                right: -70px;
+            }
+
+            &--5 {
+                width: 202px;
+                right: 0;
+            }
+        }
+
+        &--button:hover ~ .lead-form__checkbox--caption {
+            visibility: visible;
+            opacity: 1;
+        }
+
         &--button:hover, &--input:checked ~ .lead-form__checkbox--button {
             .lead-form__checkbox--img {
                 transform: scale(1);
@@ -65,7 +106,6 @@
         }
 
         &--input:checked ~ .lead-form__checkbox--button {
-
             // colors
             @each $class, $color in $colorClasses {
                 &--#{$class} {
@@ -155,15 +195,46 @@
             }
         }
 
+        &__practices {
+            margin-top: 50px;
+        }
+
         &__button {
             max-width: none;
             width: 100%;
         }
+
+        &__checkbox {
+            &--button:hover {
+                box-shadow: 0 0 3px 0 $pink;
+
+                .lead-form__checkbox--img {
+                    transform: scale(0.8);
+                }
+            }
+        }
     }
 
     @media (max-width: $mobile-breakpoint) {
+        &__practices {
+            margin-top: 70px;
+        }
+
         &__checkbox {
             max-width: 45px;
+
+            &--caption {
+                max-width: 260px;
+                bottom: 55px;
+
+                &--2 {
+                    left: -40px;
+                }
+
+                &--4 {
+                    right: -40px;
+                }
+            }
         }
     }
 }

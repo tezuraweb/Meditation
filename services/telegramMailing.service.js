@@ -9,8 +9,7 @@ class TelegramMailing {
 
         this.bot.on('message', (msg) => {
             const chatId = msg.chat.id;
-          
-            console.log(chatId);
+
             bot.sendMessage(chatId, 'Received your message');
           });
     }
