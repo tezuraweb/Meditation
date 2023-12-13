@@ -13,7 +13,7 @@
         title: 'Связь с Высшим Я, медитативное дыхание',
         text: 'Практики медитативного дыхания – идеальный первый шаг для того, чтобы гармонично встроить практику медитации в свою жизнь. Они помогут вам быстро снять напряжение, расслабиться, отдохнуть – улучшить общее самочувствие.',
         audio: '/audio/track-1-1.mp3',
-        audioTitle: 'Концентрация внимания на дыхании',
+        audioTitle: 'Концентрация внимания',
         contentColor: 'blue'
     },
     {
@@ -24,7 +24,7 @@
         title: 'Исцеляющие медитации',
         text: 'Исцеляющие медитации - простые, но очень эффективные практики, направленные на самоисцеление через осознание собственного тела. Фокусируя свое внимание на ощущениях, мы усиливаем наш энергетический потенциал - каждая клеточка нашего тела получает поток энергии - исцеляющий, наполняющий ее жизненной силой, светом.',
         audio: '/audio/track-2-1.mp3',
-        audioTitle: 'Очищающая медитация. Восходящий и нисходящий потоки энергии. Красный, синий и золотисто-желтый',
+        audioTitle: 'Очищающая медитация',
         contentColor: 'green'
     },
     {
@@ -35,7 +35,7 @@
         title: 'Женская энергия',
         text: 'Каждой женщине суждено быть счастливой – это ее природа. Практики «Сила женской энергии» помогут вам обрести состояние расслабленности, радости, легкости, открытости, доверия к жизни - осознать свою женскую природу, ощутить ее каждой клеточкой вашего существа.',
         audio: '/audio/track-3-1.mp3',
-        audioTitle: 'Медитация на свечу. Встреча с внутренним ребенком. Любовь к себе',
+        audioTitle: 'Медитация на свечу',
         contentColor: 'red'
     },
     {
@@ -57,23 +57,37 @@
         title: 'Обретение целостности',
         text: 'Практики «Обретение целостности» помогут вам освободиться от тяжести прошлого и начать новую, счастливую жизнь, в которой светло, легко и радостно.',
         audio: '/audio/track-5-1.mp3',
-        audioTitle: 'Медитация на свечу. Встреча с внутренним ребенком. Любовь к себе',
+        audioTitle: 'Обретение целостности',
         contentColor: 'darkblue'
     }
 ] %}
+
+{% set feedbacks = ['/img/main/feedback1.png', '/img/main/feedback2.png', '/img/main/feedback3.png', '/img/main/feedback4.png', '/img/main/feedback5.png', '/img/main/feedback6.png', '/img/main/feedback7.png', '/img/main/feedback8.png', '/img/main/feedback9.png', '/img/main/feedback10.png', '/img/main/feedback11.png', '/img/main/feedback12.png', '/img/main/feedback13.png'] %}
 
 {% extends "layouts/main.njk" %}
 
 {% block mainContent %}
 
     <section class="section billboard">
-        <div class="container__base">
+        <div class="billboard__container container__base">
             <div class="billboard__wrapper">
-                <div class="billboard__text">
-                    <h1 class="billboard__title">Медитации<br>в записи на каждый день</h1>
-
-                    <div class="billboard__summary">На все случаи жизни: привлечение финансов, удачи, любви, самореализация</div>
+                <h1 class="billboard__title">Медитации<br>в записи на каждый день</h1>
+                <div class="billboard__icons">
+                    <div class="billboard__icons--item">
+                        {% set includeIcon = 'practiceEgo' %}
+                        {% include "includes/svg.njk" %}
+                    </div>
+                    <div class="billboard__icons--item">
+                        {% set includeIcon = 'practiceFemale' %}
+                        {% include "includes/svg.njk" %}
+                    </div>
+                    <div class="billboard__icons--item">
+                        {% set includeIcon = 'practiceAll' %}
+                        {% include "includes/svg.njk" %}
+                    </div>
                 </div>
+                <div class="billboard__summary">На все случаи жизни: привлечение финансов, удачи, любви, самореализация</div>
+                <a class="billboard__button" href="#sendlead">Попробовать</a>
             </div>
         </div>
     </section>
@@ -84,18 +98,24 @@
 
             <div class="points__wrapper">
                 <div class="points__item">
-                    <div class="points__number">1</div>
+                    <div class="points__number">
+                        <div class="points__number--text points__number--1">1</div>
+                    </div>
                     <div class="points__text">Вы консультируетесь со специалистом, подбираете практику и оплачиваете
                         курс
                     </div>
                 </div>
                 <div class="points__item">
-                    <div class="points__number">2</div>
+                    <div class="points__number">
+                        <div class="points__number--text points__number--2">2</div>
+                    </div>
                     <div class="points__text"> Вам дается доступ в телеграм-бот, который ежедневно в 5:00 отправляет вам
                         запись медитации</div>
                 </div>
                 <div class="points__item">
-                    <div class="points__number">3</div>
+                    <div class="points__number">
+                        <div class="points__number--text points__number--3">3</div>
+                    </div>
                     <div class="points__text">На протяжении всего курса для вас доступна поддержка специалиста онлайн +
                         одна личная встреча</div>
                 </div>
@@ -107,7 +127,7 @@
         <div class="container__base">
             <h2 class="section__title">Практики</h2>
 
-            <div class="practice-cards__wrapper">
+            <div class="practice-cards__wrapper owl-carousel">
                 {% for item in cardsData %}
                     <article class="practice-cards__item">
                         <div class="practice-cards__cover">
@@ -135,13 +155,62 @@
                         </div>
                     </article>
                 {% endfor %}
+            </div>
+        </div>
+    </section>
 
-                <div class="practice-cards__promotion">
-                    <div class="practice-cards__promotion--wrapper">
-                        <div class="practice-cards__promotion--text">Оставь заявку уже сейчас!</div> 
-                        <a class="practice-cards__promotion--link" href="#sendlead">Оставить заявку</a>
+    <section class="section info" id="info">
+        <div class="container__base">
+            <h2 class="section__title">Эксперт практики и отзывы</h2>
+
+            <div class="info__wrapper">
+                <div class="info__column info__column--left">
+                    <div class="info__name">Автор и ведущая курса - Надира Бибикова</div>
+                    <div class="info__photo">
+                        <div class="info__photo--wrapper">
+                            <picture class="info__photo--img">
+                                <img src="/img/main/photo.png" width="314" height="314" alt="Портрет эсперта"/>
+                            </picture>
+                        </div>
                     </div>
-                </div> 
+                    <div class="info__desc">
+                        <div class="info__desc--visible">
+                            <p>Наш дорогой и любимый наставник, понимающий, мудрый и добрый учитель!</p>
+                            <br>
+                            <p>Светлый человек, верящий в лучшее и заряжающий этой верой всех вокруг.</p>
+                            <p>От ее улыбки любое уныние превращается в хорошее настроение. В трудную минуту, когда что-то идет не так, когда запутался, больно, страшно, одолевают сомнения - мы обращаемся к ней за помощью. <span class="info__button info__button--show">Читать дальше</span></p>
+                        </div>
+                        <div class="info__desc--hidden">
+                            <p>И попадаем в пространство принятия, любви и заботы. И это уже само по себе дает исцеляющий эффект, успокаивает, расслабляет и наполняет. Это так чудесно, когда к тебе относятся как к родному и близкому человеку. Именно этого чаще всего нам так не хватает в жизни!</p>
+                            <p>Чувство любви и внимания, которым Надира окутывает каждого, словно теплым облаком – оно просто бесценно!</p>
+                            <p>Знания и инструменты, которые передает нам Надира, меняют нашу жизнь. Все сложное становится простым и понятным, приходит ясность. Невероятное удовольствие и радость – когда мы наблюдаем изменения в жизни и осознаем, что это результат проделанной внутренней работы под ее чутким руководством.</p>
+                            <br>
+                            <p>Каждая медитация этого курса – это поток любви, который Надира пропуская через себя, направляет нам. Чудесный голос, музыка, образы и ощущения меняют что-то внутри, дают спокойствие, наполнение и ощущение радости жизни.</p>
+                            <br>
+                            <p>Каждая медитация – это прекрасное незабываемое путешествие в конце которого нас ждет возвращение к себе… И это такое счастье! <span class="info__button info__button--hide">Свернуть</span></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="info__column info__column--right">
+                    <div class="info__list">
+                        {% for item in feedbacks %}
+                            <div class="info__item{% if loop.first %} active{% endif %}" data-index="{{ loop.index }}">
+                                <picture class="info__item--img">
+                                    <img src="{{ item }}" width="314" height="450" alt="Отзыв"/>
+                                </picture>
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <div class="info__numbers">
+                        {% for item in feedbacks %}
+                            <div class="info__number{% if loop.first %} active{% endif %}" data-index="{{ loop.index }}">
+                                <div class="info__number--wrapper">
+                                    <div class="info__number--digit">{{ loop.index }}</div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
             </div>
         </div>
     </section>

@@ -1,6 +1,7 @@
 const path = require('path');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const autoprefixer = require('autoprefixer');
+const webpack = require('webpack');
 
 module.exports = {
     entry: [
@@ -36,6 +37,24 @@ module.exports = {
                 ],
             },
             {
+                test: /\.css$/i,
+                use: [
+                    MiniCssExtractPlugin.loader,
+                    'css-loader',
+                    {
+                        loader: 'postcss-loader',
+                        options: {
+                            postcssOptions: {
+                                plugins: [
+                                    autoprefixer(),
+                                ],
+                            },
+                            sourceMap: true
+                        }
+                    }
+                ],
+            },
+            {
                 test: /\.(png|svg|jpg|jpeg|gif)$/,
                 type: 'asset/resource',
             },
@@ -49,6 +68,11 @@ module.exports = {
     plugins: [
         new MiniCssExtractPlugin({
             filename: 'bundle.css',
+        }),
+        new webpack.ProvidePlugin({
+            $: 'jquery',
+            jQuery: 'jquery',
+            'window.jQuery': 'jquery'
         }),
     ],
 };

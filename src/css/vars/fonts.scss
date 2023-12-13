@@ -1,8 +1,19 @@
 @font-face {
-    font-family: 'Ribeye';
+    font-family: 'Cruinn';
+    font-style: normal;
+    font-weight: 500;
+    font-display: swap;
+    src: local(''),
+        url('../../assets/fonts/Cruinn-Medium.woff2') format('woff2'),
+        url('../../assets/fonts/Cruinn-Medium.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Qanelas';
     font-style: normal;
     font-weight: 400;
+    font-display: swap;
     src: local(''),
-        url('../../assets/fonts/Ribeye-Regular.woff2') format('woff2'),
-        url('../../assets/fonts/Ribeye-Regular.woff') format('woff');
+        url('../../assets/fonts/Qanelas-Regular.woff2') format('woff2'),
+        url('../../assets/fonts/Qanelas-Regular.woff') format('woff');
 }

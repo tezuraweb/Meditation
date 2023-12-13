@@ -1,0 +1,219 @@
+.info {
+    &__wrapper {
+        display: flex;
+    }
+
+    &__column {
+        flex-basis: 50%;
+    }
+
+    &__name {
+        font-family: 'Cruinn';
+        font-size: 18px;
+        font-weight: 500;
+        line-height: 110%;
+        margin-bottom: 30px;
+    }
+
+    &__photo {
+        margin-bottom: 30px;
+        transition: max-height .3s;
+        max-height: 416px;
+        overflow: hidden;
+
+        &.hidden {
+            max-height: 0;
+        }
+
+        &--wrapper {
+            border-radius: 30px;
+            border: 1px solid $lightBlue;
+            width: fit-content;
+            padding: 50px;
+        }
+
+        &--img {
+            border-radius: 20px;
+        }
+    }
+
+    &__desc {
+        &--hidden {
+            transition: max-height .3s;
+            max-height: 0;
+            overflow: hidden;
+
+            &.active {
+                max-height: 570px;
+            }
+        }
+    }
+
+    &__button {
+        color: $pink;
+        font-weight: bold;
+
+        &--show {
+            transition: opacity .3s, visibility .3s;
+
+            &::after {
+                content: '...';
+            }
+
+            &.hidden {
+                opacity: 0;
+                visibility: hidden;
+            }
+        }
+    }
+
+    &__list {
+        position: relative;
+        padding-bottom: 480px;
+    }
+
+    &__item {
+        position: absolute;
+        right: 10%;
+        visibility: hidden;
+        opacity: 0;
+        transition: opacity .3s, visibility .3s;
+
+        &.active {
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+
+    &__numbers {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        max-width: 335px;
+        margin-left: auto;
+        margin-right: 10%;
+    }
+
+    &__number {
+        color: $pink;
+        opacity: 0.4;
+        transition: opacity .3s;
+
+        &.active {
+            opacity: 1;
+        }
+
+        &--wrapper {
+            padding: 8px;
+            border-radius: 50%;
+            border: 2px solid $pink;
+        }
+
+        &--digit {
+            font-size: 30px;
+            line-height: 1;
+            width: 30px;
+            height: 30px;
+            text-align: center;
+        }
+    }
+
+    @media (max-width: $laptop-breakpoint) {
+        &__wrapper {
+            flex-direction: column;
+        }
+
+        &__column {
+            &--left {
+                margin-bottom: 70px;
+            }
+
+            &--right{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+            }
+        }
+
+        &__photo {
+            width: fit-content;
+            margin: 0 auto 30px;
+        }
+
+        &__desc {
+            position: relative;
+            max-width: 416px;
+            margin: 0 auto;
+            padding-bottom: 40px;
+
+            &--hidden.active {
+                max-height: 760px;
+            }
+        }
+
+        &__button {
+            &--show {
+                position: absolute;
+                bottom: 0;
+                left: 50%;
+                transform: translateX(-50%);
+    
+                &::after {
+                    content: '';
+                    position: absolute;
+                    top: 8px;
+                    right: -15px;
+                    display: block;
+                    width: 7px;
+                    height: 7px;
+                    border-right: 2px solid $pink;
+                    border-bottom: 2px solid $pink;
+                    transform: rotate(45deg);
+                }
+            }
+
+            &--hide {
+                display: block;
+                text-align: center;
+            }
+        }
+
+        &__list {
+            order: 1;
+            min-width: 416px;
+            margin: 0 auto;
+            padding-bottom: 450px;
+        }
+
+        &__item {
+            right: 0;
+            left: 0;
+        }
+
+        &__numbers {
+            gap: 15px;
+            justify-content: center;
+            max-width: 473px;
+            margin: 0 auto 30px;
+        }
+    }
+
+    @media (max-width: $mobile-breakpoint) {
+        &__column {
+            &--left {
+                margin-bottom: 30px;
+            }
+        }
+        
+        &__desc {
+            &--hidden.active {
+                max-height: 975px;
+            }
+        }
+
+        &__list {
+            min-width: 0;
+            margin: 0;
+        }
+    }
+}

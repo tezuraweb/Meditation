@@ -1,4 +1,9 @@
 .header {
+    position: absolute;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.85);
+    z-index: 10;
+
     &__wrapper {
         padding: 19px 0 23px;
         display: flex;
@@ -7,6 +12,7 @@
     }
 
     &__title {
+        font-family: 'Cruinn', sans-serif;
         font-weight: 800;
         font-size: 32px;
         line-height: 38px;
@@ -19,6 +25,7 @@
         }
 
         &--item {
+            font-family: 'Cruinn', sans-serif;
             color: $pink;
             margin-right: 50px;
 

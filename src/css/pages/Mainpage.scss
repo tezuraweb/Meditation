@@ -1,5 +1,5 @@
 .mainpage {
-    background-image: url('../../assets/img/main/mainBackground.svg');
+    background-image: url('../../assets/img/main/bg_footer.png');
     background-repeat: no-repeat;
     background-position-y: bottom;
     background-size: 100%;
@@ -12,7 +12,8 @@
 
 .mainpage-form {
     &__wrapper {
-        padding: 180px 0 100px;
+        padding: 60px 0 100px;
+        background: radial-gradient(57.08% 33.83% at 49.96% 66.17%, #FFF 0%, rgba(255, 255, 255, 0.00) 100%);
     }
 
     @media (max-width: $tablet-breakpoint) {

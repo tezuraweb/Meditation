@@ -17,14 +17,15 @@
         <link rel="manifest" href="/favicon/site.webmanifest">
         <link rel="icon" type="image/x-icon" href="/favicon/favicon.ico">
 
-        {% block customCss %}{% endblock %}
-
         <link rel="stylesheet" type="text/css" href="/dist/bundle.css">
-        <script src="/dist/bundle.js" defer></script>
+
+        {% block customCss %}{% endblock %}
     </head>
 
     <body>
         {% block bodyContent %}{% endblock %}
+
+        <script src="/dist/bundle.js" defer></script>
 
         {% block customJs %}{% endblock %}
     </body>
