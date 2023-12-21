@@ -2,6 +2,13 @@ const path = require('path');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const autoprefixer = require('autoprefixer');
 const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+
+const PreloadFontPlugin = require("./plugins/preloadFontPlugin");
+const generatePreloadLinks = require('./plugins/generatePreloadLinks');
+const generateCssLinks = require('./plugins/generateCssLinks');
+const generateScriptLinks = require('./plugins/generateScriptLinks');
 
 module.exports = {
     entry: [
@@ -12,7 +19,7 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, 'static/dist'),
         publicPath: '/dist/',
-        filename: 'bundle.js',
+        filename: 'bundle.[contenthash].js',
     },
 
     module: {
@@ -55,7 +62,7 @@ module.exports = {
                 ],
             },
             {
-                test: /\.(png|svg|jpg|jpeg|gif)$/,
+                test: /\.(png|svg|jpg|jpeg|gif|webp)$/,
                 type: 'asset/resource',
             },
             {
@@ -66,8 +73,25 @@ module.exports = {
     },
 
     plugins: [
+        new CleanWebpackPlugin(),
+        new HtmlWebpackPlugin({
+            filename: path.join(__dirname, 'views/includes/preload.njk'),
+            templateContent: ({ htmlWebpackPlugin }) => generatePreloadLinks(htmlWebpackPlugin.tags.headTags),
+            inject: false,
+        }),
+        new HtmlWebpackPlugin({
+            filename: path.join(__dirname, 'views/includes/versionCss.njk'),
+            templateContent: ({ htmlWebpackPlugin }) => generateCssLinks(htmlWebpackPlugin.tags.headTags),
+            inject: false,
+        }),
+        new HtmlWebpackPlugin({
+            filename: path.join(__dirname, 'views/includes/versionJs.njk'),
+            templateContent: ({ htmlWebpackPlugin }) => generateScriptLinks(htmlWebpackPlugin.tags.headTags),
+            inject: false,
+        }),
+        new PreloadFontPlugin(),
         new MiniCssExtractPlugin({
-            filename: 'bundle.css',
+            filename: 'bundle.[contenthash].css',
         }),
         new webpack.ProvidePlugin({
             $: 'jquery',

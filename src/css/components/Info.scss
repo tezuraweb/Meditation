@@ -52,6 +52,7 @@
     &__button {
         color: $pink;
         font-weight: bold;
+        cursor: pointer;
 
         &--show {
             transition: opacity .3s, visibility .3s;
@@ -98,6 +99,7 @@
         color: $pink;
         opacity: 0.4;
         transition: opacity .3s;
+        cursor: pointer;
 
         &.active {
             opacity: 1;
